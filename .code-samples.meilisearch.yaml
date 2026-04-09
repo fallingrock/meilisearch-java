@@ -340,9 +340,6 @@ get_version_1: |-
   client.getVersion();
 distinct_attribute_guide_1: |-
   client.index("jackets").updateDistinctAttributeSettings("product_id");
-field_properties_guide_searchable_1: |-
-  String[] attributes = {"title", "overview", "genres"}
-  client.index("movies").updateSearchableAttributesSettings(attributes);
 field_properties_guide_displayed_1: |-
   String[] attributes = {"title", "overview", "genres", "release_date"}
   client.index("movies").updateDisplayedAttributesSettings(attributes);
@@ -358,9 +355,6 @@ filtering_guide_3: |-
 filtering_guide_nested_1: |-
   SearchRequest searchRequest = SearchRequest.builder().q("thriller").filter(new String[] {"rating.users >= 90"}).build();
   client.index("movie_ratings").search(searchRequest);
-search_parameter_guide_show_ranking_score_details_1: |-
-  SearchRequest searchRequest = SearchRequest.builder().q("dragon").showRankingScoreDetails(true).build();
-  client.index("movies").search(searchRequest);
 synonyms_guide_1: |-
   HashMap<String, String[]> synonyms = new HashMap<String, String[]>();
   synonyms.put("great", new String[] {"fantastic"});
@@ -626,8 +620,6 @@ export_post_1: |-
   client.export(request);
 compact_index_1: |-
   client.index("INDEX_NAME").compact();
-rename_an_index_1: |-
-  client.updateIndex("indexA", null, "indexB");
 webhooks_get_1: |-
   client.getWebhooks();
 webhooks_get_single_1: |-
