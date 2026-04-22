@@ -39,6 +39,11 @@ public class URLBuilderTest {
                 assertThrows(IllegalArgumentException.class, () -> classToTest.addSubroute(""))
                         .getMessage(),
                 is(equalTo("route segment must not be null or empty")));
+
+        assertThat(
+                assertThrows(IllegalArgumentException.class, () -> classToTest.addSubroute(null))
+                        .getMessage(),
+                is(equalTo("route segment must not be null or empty")));
     }
 
     @Test
