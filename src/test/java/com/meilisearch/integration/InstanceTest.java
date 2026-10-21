@@ -1,13 +1,12 @@
 package com.meilisearch.integration;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.*;
 
 import com.meilisearch.integration.classes.AbstractIT;
 import com.meilisearch.sdk.Index;
 import com.meilisearch.sdk.model.IndexStats;
+import com.meilisearch.sdk.model.ServerVersion;
 import com.meilisearch.sdk.model.Stats;
 import com.meilisearch.sdk.model.TaskInfo;
 import org.junit.jupiter.api.AfterAll;
@@ -50,6 +49,15 @@ public class InstanceTest extends AbstractIT {
         String version = client.getVersion();
 
         assertThat(version, is(notNullValue()));
+    }
+
+    /** Test Get Server Version */
+    @Test
+    public void testGetServerVersion() throws Exception {
+        ServerVersion serverVersion = client.getServerVersion();
+
+        assertThat(serverVersion, is(notNullValue()));
+        assertThat(serverVersion.getPkgVersion(), startsWith("v"));
     }
 
     /** Test Get Stats */
